@@ -21,8 +21,8 @@ pickle-email-*.html
 config/initializers/secret_token.rb
 config/master.key
 
- .DS_Store
 # Only include if you have production secrets in this file, which is no longer a Rails default
+ .DS_Store
 # config/secrets.yml
 # dotenv, dotenv-rails
 # TODO Comment out these rules if environment variables can be committed
