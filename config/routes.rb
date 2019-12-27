@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tv_shows
+      resources :watchlists
       get '/tv_shows/search/:query', to: 'tv_shows#search_and_save'
     end
   end
