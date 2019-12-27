@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_040258) do
+ActiveRecord::Schema.define(version: 2019_12_27_053453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_12_27_040258) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tv_show_id"
+    t.boolean "watched", default: false
   end
 
   create_table "watchlists", force: :cascade do |t|

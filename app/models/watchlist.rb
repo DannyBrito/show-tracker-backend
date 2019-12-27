@@ -17,6 +17,7 @@ class Watchlist < ApplicationRecord
          ts_name = ep.episode.tv_show.name
          new_format_ep['tv_show_name'] = ts_name
          new_format_ep['rating'] = ep.rating
+         new_format_ep['watched'] = ep.watched
         if(!new_hash['tv_shows'][ep.tv_show_id])
 
             new_hash['tv_shows'][ep.tv_show_id] = {tv_show_name: ts_name,episodes:[new_format_ep]}
