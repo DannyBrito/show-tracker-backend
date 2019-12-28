@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_182339) do
+ActiveRecord::Schema.define(version: 2019_12_27_204332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_182339) do
   create_table "tv_shows", force: :cascade do |t|
     t.string "name"
     t.string "poster_path"
-    t.integer "seasons"
+    t.integer "num_seasons"
     t.string "api"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_182339) do
     t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   create_table "watchlist_episodes", force: :cascade do |t|
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_12_26_182339) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tv_show_id"
+    t.boolean "watched", default: false
   end
 
   create_table "watchlists", force: :cascade do |t|
