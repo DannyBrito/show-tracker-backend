@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :tv_shows
       resources :watchlists
       resources :users
+      resources :watchlist_episodes
       get '/tv_shows/search/:query', to: 'tv_shows#search_and_save'
       post '/login', to: 'auth#create'
     end
