@@ -2,7 +2,6 @@ class Api::V1::TvShowsController < ApplicationController
 
     def show # used for retriving data from primary API
         tv_show = TvShow.find_by(id: params[:id])
-
         
         # tv_show = TvShowSerializer.new(tv_show,{include:[:episodes]}).serialized_json
         # feature to implement better where using serializer
@@ -39,12 +38,11 @@ class Api::V1::TvShowsController < ApplicationController
         
         api_tv_show = RestClient.get "#{ENV['MVDB_BASE']}tv/#{current_ts.api}?api_key=#{ENV['MV_KEY']}&append_to_response=season/1,season/2,season/3,season/4,season/5,season/6,season/7,season/8,season/9,season/10,season/11,season/12,season/13,season/14,season/15,season/16,season/17,season/18,season/19,season/20", {accept: :json}
         api_tv_show = JSON.parse(api_tv_show)
-        current_ts[:seasons] = api_tv_show['number_of_seasons']
-        
+        current_ts[:num_seasons] = api_tv_show['number_of_seasons'] #first end point doesn't return number of seasons or episodes
         
         c_season = 1
         
-        while(c_season <= current_ts[:seasons]) do
+        while(c_season <= current_ts[:num_seasons]) do
             api_tv_show["season/#{c_season}"]['episodes'].each{|ep| add_episodes_to_ts(ep,current_ts.id)}
             c_season += 1
         end
@@ -52,6 +50,7 @@ class Api::V1::TvShowsController < ApplicationController
         #save current number of seasons and return new tv-show implicit
 
         current_ts.save
+        return current_ts
     end
     
     def add_episodes_to_ts(episode, tv_show_id)
