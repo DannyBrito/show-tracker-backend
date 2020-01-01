@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       resources :users
       resources :watchlist_episodes
       get '/tv_shows/search/:query', to: 'tv_shows#search_and_save'
+      get '/tv_shows_popular', to:"tv_shows#popular"
       post '/login', to: 'auth#create'
+      get '/auto_login', to: 'auth#auto_login'
     end
   end
   

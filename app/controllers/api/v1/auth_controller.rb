@@ -7,9 +7,17 @@ class Api::V1::AuthController < ApplicationController
     if @user && @user.authenticate(user_login_params[:password])
       # encode token comes from ApplicationController
       token = encode_token({ user_id: @user.id })
-      render json: { user: @user, jwt: token }, status: :accepted
+      render json: { user: @user.get_attributes, token: token }, status: :accepted
     else
       render json: { message: 'Invalid username or password' }, status: :unauthorized
+    end
+  end
+
+  def auto_login
+    if current_user
+      render json: {user: current_user.get_attributes}
+    else
+        render json: {errors: "User not found. Please login again. "}
     end
   end
  

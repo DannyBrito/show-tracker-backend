@@ -23,6 +23,13 @@ class Api::V1::TvShowsController < ApplicationController
 
         render :json => tv_shows
     end
+
+    def popular
+        api_tv_shows=RestClient.get "#{ENV['MVDB_BASE']}tv/popular?api_key=#{ENV['MV_KEY']}&language=en-US", {accept: :json}
+        api_tv_shows = JSON.parse(api_tv_shows)
+        api_tv_shows = api_tv_shows['results'].map{|ts|{id: ts['id'],name:ts['name'],poster_path:ts['poster_path'], overview: ts['overview']}}
+        render :json => api_tv_shows
+    end
     
     private
     

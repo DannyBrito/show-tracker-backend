@@ -8,7 +8,7 @@ class Api::V1::WatchlistsController < ApplicationController
         #     to_locate = 4
         # end
 
-        watchlist = Watchlist.find(to_locate)
-        render :json => watchlist.get_attributes
+        watchlist = Watchlist.find_by(user_id:to_locate)
+        render :json => {watchlist: watchlist, tv_shows: watchlist.tv_shows.distinct}
     end
 end
