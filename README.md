@@ -8,7 +8,7 @@
 ## Overview
 
 Users can add & remove tv shows from their watchlist.
-The search bar can be easily access by users to look up different tv shows. Once the results are display, the user has two options:
+The search bar can be easily accessed by users to look up different tv shows. Once the results are displayed, the user has two options:
 
 <li/>track tv-show
 <li/>go to display page for specific tv-show
@@ -18,14 +18,14 @@ The search bar can be easily access by users to look up different tv shows. Once
 
 <b>Sign Up & Log In:</b>
 
-Standar Log-In and Sign-Up pages implemented with different validations and Auth0.
+Standard Log-In and Sign-Up pages implemented with different validations and Auth0.
 
 ![](./docs/logsignup.gif)
 
 
 <b>JWT/Auth0 & LocalStorage:</b>
 
-Utilized JWT, Auth0 and LocalStorage to allow users to stay log-in, improving user experience.
+Utilized JWT, Auth0, and LocalStorage to allow users to stay log-in, improving user experience.
 
 ![](./docs/localstorage.gif)
 
